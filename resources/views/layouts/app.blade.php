@@ -12,7 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+        <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free-5.15.4-web/css/all.min.css') }}">
+        
         @livewireStyles
 
         <!-- Scripts -->
@@ -42,5 +43,7 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @stack('js')
     </body>
 </html>

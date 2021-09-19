@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Productos\ShowProducto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('inicio');
 });
+
+Route::get('productos', ShowProducto::class)->name('productos');
