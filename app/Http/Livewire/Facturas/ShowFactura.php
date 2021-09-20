@@ -47,7 +47,10 @@ class ShowFactura extends Component
             $this->saldoPendiente = $this->total;
             $this->saldoPagado = 0;
         }
-        $pedidos = Pedido::all();
+       // $pedidos = Pedido::all();
+        $pedidos = Pedido::groupBy('id_producto')
+        ->selectRaw('sum(cantidad) as cantidad, id_producto')
+        ->get();
         return view('livewire.facturas.show-factura', compact('pedidos'));
     }
 
@@ -92,7 +95,10 @@ class ShowFactura extends Component
             ]);
         }
 
-        $pedidosG=Pedido::all();
+            $pedidosG = Pedido::groupBy('id_producto')
+            ->selectRaw('sum(cantidad) as cantidad, id_producto')
+            ->get();
+
         foreach ($pedidosG as $pedidog) {
             Detalle::create([
                 'id_producto'=>$pedidog->id_producto,
@@ -102,6 +108,8 @@ class ShowFactura extends Component
             
         }
         Pedido::truncate();
+        $this->reset(['pagado']);
+        
     }
 
     public function cancelar()
