@@ -14,4 +14,10 @@ class Producto extends Model
     {
         return $this->belongsTo('App\Models\Categoria','id_categoria','id');
     }
+
+    public function pedido()
+    {
+        return $this->hasMany('App\Models\Pedido','id_producto','id');
+    }
+
 }

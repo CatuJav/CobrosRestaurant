@@ -15,7 +15,7 @@
                         </x-slot>
                         Nueva Factura
                         <x-slot name="footer">
-                            <a href="#"
+                            <a href="{{ route('nuevafactura') }}"
                             class="mt-4 text-xl w-full text-white bg-green-700 hover:bg-green-500 py-2 px-8 rounded-xl shadow-lg">Ir</a>
                         </x-slot>
 

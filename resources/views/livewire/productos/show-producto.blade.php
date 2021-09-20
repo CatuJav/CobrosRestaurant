@@ -7,40 +7,41 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         @livewire('productos.create-producto')
 
+       <x-table>
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col"
                         class="w-24 cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        wire:click="order('id')">
+                        >
                         ID
                         {{-- Sort --}}
 
                     </th>
                     <th scope="col"
                         class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        wire:click="order('title')">
+                       >
                         Nombre
                         {{-- Sort --}}
 
                     </th>
                     <th scope="col"
                         class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        wire:click="order('content')">
+                        >
                         Precio
                         {{-- Sort --}}
 
                     </th>
                     <th scope="col"
                         class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        wire:click="order('content')">
+                        >
                         Categoría
                         {{-- Sort --}}
 
                     </th>
                     <th scope="col"
                         class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        wire:click="order('content')">
+                        >
                         Acciones
                         {{-- Sort --}}
 
@@ -93,6 +94,7 @@
                 <!-- More people... -->
             </tbody>
         </table>
+       </x-table>
     </div>
 
 
