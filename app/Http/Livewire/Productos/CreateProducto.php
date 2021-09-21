@@ -23,7 +23,7 @@ class CreateProducto extends Component
 
     public function mount()
     {
-       $this->categorias=Categoria::all();
+       $this->categorias=Categoria::where('activo','=','1')->get();
     }
 
     public function render()

@@ -15,14 +15,14 @@ class ShowFactura extends Component
     public $productos;
     public $id_producto, $pagado;
     public $cantidad = '1';
-
+    public $observacion='';
     public $saldoPendiente = 0;
     public $saldoPagado = 0;
     public $total = 0;
 
 
     protected $rules = [
-        'id_producto' => 'required|min:2',
+        'id_producto' => 'required',
         'cantidad' => 'required|numeric|min:1'
 
     ];
@@ -32,7 +32,7 @@ class ShowFactura extends Component
 
     public function mount()
     {
-        $this->productos = Producto::all();
+        $this->productos = Producto::where('activo','=','1')->get();
     }
 
 
@@ -87,11 +87,14 @@ class ShowFactura extends Component
     {
         if ($this->pagado == 1) {
             $factura = Factura::create([
-                'estado' => 'PAGADO'
+                'estado' => 'PAGADO',
+                'observacion'=>$this->observacion!=''?$this->observacion:'Sin observación'
+                
             ]);
         } else {
             $factura = Factura::create([
-                'estado' => 'PENDIENTE'
+                'estado' => 'PENDIENTE',
+                'observacion'=>$this->observacion!=''?$this->observacion:'Sin observación'
             ]);
         }
 
@@ -108,7 +111,7 @@ class ShowFactura extends Component
             
         }
         Pedido::truncate();
-        $this->reset(['pagado']);
+        $this->reset(['pagado','observacion']);
         
     }
 

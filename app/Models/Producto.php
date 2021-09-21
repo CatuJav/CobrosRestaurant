@@ -19,5 +19,9 @@ class Producto extends Model
     {
         return $this->hasMany('App\Models\Pedido','id_producto','id');
     }
+    public function detalle()
+    {
+        return $this->hasMany('App\Models\Detalle','id_producto','id');
+    }
 
 }

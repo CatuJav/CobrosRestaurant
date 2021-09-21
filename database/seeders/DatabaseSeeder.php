@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        
 
         $categria1=Categoria::create([
             "nombre"=>"Bebidas"
@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $categria6=Categoria::create([
             "nombre"=>"Extras"
         ]);
+        \App\Models\Producto::factory(1000)->create();
     }
 }

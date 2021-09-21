@@ -5,11 +5,12 @@ namespace App\Http\Livewire\Productos;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ShowProducto extends Component
 {
-    
-    public $categorias,$nombre,$precio,$id_categoria;
+    use WithPagination;
+    public $categorias,$nombre,$precio,$id_categoria, $productoNUevo;
     public $open_edit=false;
 
     protected $rules=[
@@ -19,16 +20,24 @@ class ShowProducto extends Component
     ];
     
     protected $listeners=['render'=>'render','delete'];
-
+    public $readyToLoad=false;
+    public function loadProductos()
+    {
+        $this->readyToLoad=true;
+    }
     public function mount()
     {
-       $this->categorias=Categoria::all();
-       $this->prducto=new Producto();
+       $this->categorias=Categoria::where('activo','=','1')->get();
+      
     }
     public function render()
     {
-        $productos=Producto::all();
-        return view('livewire.productos.show-producto',compact('productos'));
+        $productos=Producto::where('activo','=','1')->paginate(10);
+        return view('livewire.productos.show-producto',[
+            'productos' => $this->readyToLoad
+                ? $productos
+                : [],
+        ]);
     }
 
     public function edit(Producto $producto)
@@ -50,6 +59,7 @@ class ShowProducto extends Component
 
     public function delete(Producto $producto)
     {
-        $producto->delete();
+        $producto->activo='0';
+        $producto->save();
     }
 }

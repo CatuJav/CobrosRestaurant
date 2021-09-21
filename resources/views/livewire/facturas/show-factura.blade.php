@@ -18,7 +18,10 @@
         <x-jet-label value="Cantidad: " />
         <x-jet-input type="text" class="w-full" wire:model='cantidad' />
         <x-jet-input-error for="cantidad"/>
-        <button class="btn btn-green" wire:click="agregar">Agregar</button>
+        
+        <x-jet-label value="Observación: " />
+        <x-jet-input type="text" class="w-full py-2" wire:model='observacion' placeholder="Opcional. Ej: Mesa 1" />
+        <button class="btn btn-green py-4" wire:click="agregar">Agregar</button>
 
 
         @if (count($pedidos))

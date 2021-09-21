@@ -17,6 +17,7 @@ class CreateFacturasTable extends Migration
             $table->id();
             $table->timestamp('fecha_hora');
             $table->string('estado');
+            $table->text('observacion')->default('Sin observación');
             $table->timestamps();
 
          

@@ -1,9 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cobros') }}
-        </h2>
-    </x-slot>
+    <x-jet-section-title>
+        <x-slot name="title"><p class="py-1 px-1 text-3xl font-semibold">Restaurante</p></x-slot>
+        <x-slot name="description"></x-slot>
+    </x-jet-section-title>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -26,7 +25,7 @@
                         </x-slot>
                         Ver Facuras
                         <x-slot name="footer">
-                            <a href="#"
+                            <a href="facturas"
                             class="mt-4 text-xl w-full text-white bg-green-700 hover:bg-green-500 py-2 px-8 rounded-xl shadow-lg">Ir</a>
                         </x-slot>
 

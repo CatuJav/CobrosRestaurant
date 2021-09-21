@@ -18,7 +18,7 @@ class CreateDetallesTable extends Migration
             $table->integer('cantidad');
             $table->unsignedBigInteger('id_factura');
 
-            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('set null');
+            $table->foreign('id_producto')->references('id')->on('productos');
             $table->foreign('id_factura')->references('id')->on('facturas')->onDelete('cascade');
 
             $table->timestamps();
