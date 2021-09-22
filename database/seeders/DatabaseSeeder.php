@@ -34,6 +34,6 @@ class DatabaseSeeder extends Seeder
         $categria6=Categoria::create([
             "nombre"=>"Extras"
         ]);
-        \App\Models\Producto::factory(10)->create();
+       // \App\Models\Producto::factory(10)->create();
     }
 }

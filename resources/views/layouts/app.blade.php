@@ -19,7 +19,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -106,7 +106,7 @@
     @stack('modals')
 
     @livewireScripts
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
     @stack('js')
 </body>
 
