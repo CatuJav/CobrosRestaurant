@@ -19,6 +19,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -57,6 +58,9 @@
                                                 <a href="{{ route('productos') }}" class="{{request()->routeIs('productos') ? 'text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold underline':'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                                     Productos
                                                 </a>
+                                                <a href="{{ route('estadisticas') }}" class="{{request()->routeIs('estadisticas') ? 'text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold underline':'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                    Estadísticas
+                                                </a>
                                           
                                     </div>
                                 </div>
@@ -82,6 +86,9 @@
                                 </a>
                                 <a href="{{ route('productos') }}" active="{{request()->routeIs('productos') ? 'true':''}}"  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                                     Productos
+                                </a>
+                                <a href="{{ route('estadisticas') }}" class="{{request()->routeIs('estadisticas') ? 'text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold underline':'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Estadísticas
                                 </a>
                         </div>
                     </div>

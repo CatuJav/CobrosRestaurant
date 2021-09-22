@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Estadisticas\ShowEstadisticas;
 use App\Http\Livewire\Facturas\ShowFactura;
 use App\Http\Livewire\Facturas\ShowPedidos;
 use App\Http\Livewire\Productos\ShowProducto;
@@ -23,3 +24,4 @@ Route::get('/', function () {
 Route::get('productos', ShowProducto::class)->name('productos');
 Route::get('nuevafactura', ShowFactura::class)->name('nuevafactura');
 Route::get('facturas', ShowPedidos::class)->name('facturas');
+Route::get('estadisticas', ShowEstadisticas::class)->name('estadisticas');

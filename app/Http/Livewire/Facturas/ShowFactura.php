@@ -23,7 +23,7 @@ class ShowFactura extends Component
 
     protected $rules = [
         'id_producto' => 'required',
-        'cantidad' => 'required|numeric|min:1'
+        'cantidad' => 'required|integer|min:1'
 
     ];
 
