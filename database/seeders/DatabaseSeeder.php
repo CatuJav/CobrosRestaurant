@@ -17,16 +17,16 @@ class DatabaseSeeder extends Seeder
         
 
         $categria1=Categoria::create([
-            "nombre"=>"Bebidas"
+            "nombre"=>"Cervezas"
         ]);
         $categria2=Categoria::create([
-            "nombre"=>"Desayunos"
+            "nombre"=>"Bebidas"
         ]);
         $categria3=Categoria::create([
-            "nombre"=>"Almuerzos"
+            "nombre"=>"Cafetería"
         ]);
         $categria4=Categoria::create([
-            "nombre"=>"Cenas"
+            "nombre"=>"Comida rápida"
         ]);
         $categria5=Categoria::create([
             "nombre"=>"Postres"
