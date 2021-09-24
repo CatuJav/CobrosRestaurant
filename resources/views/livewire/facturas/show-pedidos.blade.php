@@ -45,6 +45,12 @@
                                         </th>
                                         <th scope="col"
                                             class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Total
+                                            {{-- Sort --}}
+
+                                        </th>
+                                        <th scope="col"
+                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Acciones
                                             {{-- Sort --}}
 
@@ -75,6 +81,18 @@
                                             </td>
                                             <td class="px-6 py-4 ">
                                                 <div class="text-sm text-gray-900">{{ $facturaShow->estado }}</div>
+
+                                            </td>
+                                            <td class="px-6 py-4 ">
+                                                @php
+                                                $totalPen=0;
+                                                foreach ($facturaShow->detalle as $item) {
+                                                    # code...
+                                                    $totalPen += $item->producto->precio * $item->cantidad;
+                                                }
+                                                
+                                            @endphp
+                                                <div class="text-lg text-gray-900">${{ $totalPen;}}</div>
 
                                             </td>
                                             <td class=" py-4 ">
