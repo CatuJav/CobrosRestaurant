@@ -330,6 +330,17 @@
 
         </x-slot>
         <x-slot name="footer">
+            <div class="flex">
+                @if ($factura != null)
+                @if ($factura->estado == 'PENDIENTE')
+            <x-jet-secondary-button class="btn btn-blue  justify-self-start disabled:opacity-25"
+            wire:click="editarPedido({{ $factura }})"
+                >
+                EDITAR
+            </x-jet-secondary-button>
+            @endif
+            @endif
+            <div class="w-full"></div>
             <x-jet-secondary-button wire:click="$set('open',false)">
                 Cancelar
             </x-jet-secondary-button>
@@ -342,10 +353,158 @@
                     </x-jet-secondary-button>
 
                 @else
-                    <x-jet-danger-button class="disabled:opacity-25"
+                    <x-jet-danger-button class="w-auto disabled:opacity-25"
                         wire:click="actualizarANoPagado({{ $factura }})">
                         NO PAGADO
                     </x-jet-danger-button>
+                @endif
+            @endif
+            {{-- Para mostrar cuando se esta guardando el post --}}
+            {{-- <span wire:loading.flex wire:tarjet="save">Cargando...</span> --}}
+            {{-- <span wire:loading wire:tarjet="save">Cargando...</span> --}}
+        </div>
+        </x-slot>
+    </x-jet-dialog-modal>
+
+
+    {{-- Edicioón de la factura pendiente --}}
+    <x-jet-dialog-modal wire:model="open_edit">
+        <x-slot name="title">
+           Editar factura 
+        </x-slot>
+        <x-slot name="content">
+
+            @if ($factura != null)
+                <div class="mb-4 flex">
+                    <x-jet-label class="font-bold text-xl" value="N°: " />
+                    <x-jet-label class="text-xl px-2" value=" {{ $factura->id }}" />
+
+                    {{-- Mostrar errores --}}
+
+                </div>
+                <div class="mb-4 flex">
+                    <x-jet-label class="font-bold text-xl" value="Fecha: " />
+                    <x-jet-label class="text-xl px-2" value=" {{ $factura->fecha_hora }}" />
+
+                    {{-- Mostrar errores --}}
+
+                </div>
+                {{-- Mostrar productos e ingresar cantidad --}}
+                <div class="mb-4 row-auto">
+                    <x-jet-label class="font-bold text-xl" value="Observación: " />
+                    <x-jet-label class="text-lg px-2" value=" {{ $factura->observacion }}" />
+                    <x-jet-label value="Producto" />
+                    <select name="" id="" class="form-control w-full" wire:model="id_producto">
+                        <option value="0" selected hidden>Seleccione...</option>
+                        @foreach ($productos as $productoEleccion)
+                            <option value="{{ $productoEleccion->id }}">{{ $productoEleccion->nombre }}</option>
+                        @endforeach
+            
+                    </select>
+                    <x-jet-input-error for="id_producto"/>
+                    <x-jet-label value="Cantidad: " />
+                    <x-jet-input type="text" class="w-full" wire:model='cantidad' />
+                    <x-jet-input-error for="cantidad"/>
+                    <button class="btn btn-green py-4" wire:click="agregarAEdit">Agregar</button>
+
+                </div>
+                <x-table>
+                    @php
+                        $i = 1;
+                        $total = 0;
+                    @endphp
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    N°
+                                </th>
+                                <th scope="col"
+                                    class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Descripción
+                                </th>
+                                <th scope="col"
+                                    class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Precio Unitario
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Cantidad
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Subtotal
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($pedidosEdit as $item)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                {{ $i++ }}
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                    <td class="px-2 py-4">
+                                        <div class="text-sm text-gray-900">{{ $item->producto->nombre }}</div>
+
+                                    </td>
+                                    <td class="px-2 py-4">
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            {{ $item->producto->precio }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">
+                                        {{ $item->cantidad }}
+                                    </td>
+                                    <td class="px-6 py-4  text-sm text-center text-gray-500">
+                                        {{ $item->producto->precio * $item->cantidad }}
+                                    </td>
+                                    <td class="px-6 py-4  text-sm text-center text-gray-500">
+                                        <a class="btn btn-red ml-2"
+                                        wire:click="deleteEdit({{$item}})">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @php
+                                    $total += $item->producto->precio * $item->cantidad;
+                                @endphp
+                            @endforeach
+                            <!-- More people... -->
+                        </tbody>
+                    </table>
+                </x-table>
+                <div class="px-8 text-right w-full">
+                    <p class="text-2xl font-bold px-2">Total: $ {{ $total }}</p>
+                </div>
+
+
+            @endif
+
+        </x-slot>
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="cancelarEdit">
+                Cancelar
+            </x-jet-secondary-button>
+            {{-- Se puede agregar remove al loading para ocultarlo mientras se ejecuta el metodo save --}}
+            @if ($factura != null)
+                @if ($factura->estado == 'PENDIENTE')
+                   
+                    <x-jet-secondary-button class="btn btn-blue disabled:opacity-25"
+                        wire:click="actualizarEdit({{ $factura }})">
+                        GUARDAR
+                    </x-jet-secondary-button>
+
                 @endif
             @endif
             {{-- Para mostrar cuando se esta guardando el post --}}

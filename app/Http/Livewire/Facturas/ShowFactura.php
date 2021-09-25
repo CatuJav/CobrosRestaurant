@@ -34,6 +34,7 @@ class ShowFactura extends Component
     public function mount()
     {
         $this->productos = Producto::where('activo','=','1')->get();
+        Pedido::truncate();
     }
 
 
