@@ -26,25 +26,25 @@
                                         </th>
 
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Fecha
                                             {{-- Sort --}}
 
                                         </th>
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Observación
                                             {{-- Sort --}}
 
                                         </th>
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Estado
                                             {{-- Sort --}}
 
                                         </th>
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Total
                                             {{-- Sort --}}
 
@@ -69,17 +69,17 @@
                                                 <div class="text-sm text-gray-900">{{ $facturaShow->id }}</div>
 
                                             </td>
-                                            <td class="px-6 py-4 ">
+                                            <td class="px-3 py-4 ">
                                                 <div class="text-sm text-gray-900">{{ $facturaShow->fecha_hora }}
                                                 </div>
 
                                             </td>
-                                            <td class="px-6 py-4 ">
+                                            <td class="px-3 py-4 ">
                                                 <div class="text-sm text-gray-900">{{ $facturaShow->observacion }}
                                                 </div>
 
                                             </td>
-                                            <td class="px-6 py-4 ">
+                                            <td class="px-3 py-4 ">
                                                 <div class="text-sm text-gray-900">{{ $facturaShow->estado }}</div>
 
                                             </td>
@@ -131,25 +131,25 @@
                                         </th>
 
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Fecha
                                             {{-- Sort --}}
 
                                         </th>
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Observación
                                             {{-- Sort --}}
 
                                         </th>
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Estado
                                             {{-- Sort --}}
 
                                         </th>
                                         <th scope="col"
-                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="cursor-pointer px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Acciones
                                             {{-- Sort --}}
 
@@ -179,12 +179,12 @@
                                                 </div>
 
                                             </td>
-                                            <td class="px-6 py-4 ">
+                                            <td class="px-2 py-4 ">
                                                 <div class="text-sm text-gray-900">{{ $facturaShow->observacion }}
                                                 </div>
 
                                             </td>
-                                            <td class="px-6 py-4 ">
+                                            <td class="px-2 py-4 ">
                                                 <div class="text-sm text-gray-900">{{ $facturaShow->estado }}</div>
 
                                             </td>
