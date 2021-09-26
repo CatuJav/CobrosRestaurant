@@ -154,6 +154,12 @@
                                             {{-- Sort --}}
 
                                         </th>
+                                        <th scope="col"
+                                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Total
+                                            {{-- Sort --}}
+
+                                        </th>
 
                                         <th scope="col" class="relative px-6 py-3">
                                             <span class="sr-only">Edit</span>
@@ -186,6 +192,18 @@
                                                 <x-jet-secondary-button class="text-sm underline"
                                                     wire:click='edit({{ $facturaShow }})'>Seleccionar
                                                 </x-jet-secondary-button>
+
+                                            </td>
+                                            <td class="px-6 py-4 ">
+                                                @php
+                                                $totalPagado=0;
+                                                foreach ($facturaShow->detalle as $item) {
+                                                    # code...
+                                                    $totalPagado += $item->producto->precio * $item->cantidad;
+                                                }
+                                                
+                                            @endphp
+                                                <div class="text-lg text-gray-900">${{ $totalPagado}}</div>
 
                                             </td>
                                     @endforeach
