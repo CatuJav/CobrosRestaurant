@@ -60,7 +60,7 @@ class ShowEstadisticas extends Component
     }
     public function ventaMensual()
     {
-        $datos = Factura::whereMonth('fecha_hora', date('m'))->where('estado', 'PAGADO')->get();
+        $datos = Factura::whereMonth('fecha_hora', date('m'))->whereYear('fecha_hora', date('Y'))->where('estado', 'PAGADO')->get();
         $this->total = 0;
         $detalles = [];
         foreach ($datos as $dato) {
